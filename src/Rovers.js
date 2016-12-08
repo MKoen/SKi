@@ -8,10 +8,10 @@ var Rovers = React.createClass( {
     },
 
     render: function () {
-        let data = this.props.getData();
+        let rovers = this.props.getRovers();
         let roverList = [];
 
-        data.forEach((rover) => {
+        rovers.forEach((rover) => {
             let roverListItem = (
                 <tr>
                     <td>{rover.id}</td>
