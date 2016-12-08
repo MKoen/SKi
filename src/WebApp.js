@@ -8,6 +8,12 @@ import API from './api/index';
 var Rovers = React.createClass( {
     getInitialState: function () {
         API.setHook((data) => {
+
+            data.forEach((channel) => {
+                if (channel.temperature >= 10)
+                    alert(channel.name + "has a temperature of " + channel.temperature + " !");
+            });
+
             this.setState(() => {
                 return {channels: data};
             });
