@@ -27,8 +27,7 @@ var Rovers = React.createClass( {
         return (
             <Router history={browserHistory}>
                 <Route channels={this.getChannels} path="/" component={Channels}>
-                    <Route channels={this.getChannels} path="channels" component={Channels}/>
-                    <Route channels={this.getChannels} path="rovers" component={Rovers}/>
+                    <Route channels={this.getChannels} path="list" component={Channels}/>
                     <Route channels={this.getChannels} path="map" component={Map}/>
                 </Route>
             </Router>

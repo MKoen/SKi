@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from './NavBar'
-import { ListGroup, ListGroupItem} from 'react-bootstrap'
+import { Table, Glyphicon } from 'react-bootstrap'
 
 var Channels = React.createClass( {
     getInitialState: function () {
@@ -10,16 +10,32 @@ var Channels = React.createClass( {
     render: function () {
         let channelList = [];
 
-        this.props.route.channels().forEach((channel) => {
+        this.props.route.channels().sort((x, y) => {
+            return y.active - x.active;
+        }).forEach((channel) => {
             let channelListItem;
 
             if (channel.active) {
                 channelListItem = (
-                    <ListGroupItem key={channel.id} header={channel.id} active>{channel.name}</ListGroupItem>
+                    <tr key={channel.id}>
+                        <td>{channel.id}</td>
+                        <td>{channel.name}</td>
+                        <td>{channel.position.x}</td>
+                        <td>{channel.position.y}</td>
+                        <td>5</td>
+                        <td>{channel.direction}</td>
+                        <td>{channel.speed}</td>
+                        <td>{channel.temperature}°C</td>
+                        <td>{channel.water}</td>
+                        <td><Glyphicon bsStyle="glyphicon glyphicon-star"/></td>
+                    </tr>
                 )
             } else {
                 channelListItem = (
-                    <ListGroupItem key={channel.id} header={channel.id} disabled>Not in use</ListGroupItem>
+                    <tr key={channel.id}>
+                        <td>{channel.id}</td>
+                        <td colSpan="8">No data received from this channel...</td>
+                    </tr>
                 )
             }
 
@@ -27,12 +43,28 @@ var Channels = React.createClass( {
         });
 
         return (
-           <div>
-               <NavBar/>
-               <ListGroup>
-                   {channelList}
-               </ListGroup>
-           </div>
+            <div>
+                <NavBar/>
+                <Table responsive className="channelList">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>X</th>
+                        <th>Y</th>
+                        <th>Distance</th>
+                        <th>Direction</th>
+                        <th>Speed</th>
+                        <th>Temperature</th>
+                        <th>Water</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {channelList}
+                    </tbody>
+                </Table>
+            </div>
         )
     }
 } );

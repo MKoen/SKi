@@ -16,10 +16,9 @@ var NavBar = React.createClass( {
                         <a href="#">Rogue Rovers</a>
                     </Navbar.Brand>
                 </Navbar.Header>
-                <ul>
-                    <li><Link to={`/channels`}>Channels</Link></li>
-                    <li><Link to={`/`}>Rovers</Link></li>
-                    <li><Link to={`/`}>Map</Link></li>
+                <ul className="nav navbar-nav">
+                    <li className="nav-item"><Link to={`/list`}>List of Rovers</Link></li>
+                    <li className="nav-item"><Link to={`/map`}>Map</Link></li>
                 </ul>
             </Navbar>
         )
