@@ -7,29 +7,32 @@ var Map = React.createClass( {
     },
 
     render: function () {
-        let rovers = this.props.channels.filter((channel) => { return channel.active });
+
+        let rovers = this.props.route.channels().filter((channel) => {
+            return channel.active
+        });
 
         rovers.forEach((rover) => {
 
         });
 
-        drawRover = function(x, y, name){
-            var context = document.getElementById("roverMap").getContext("2d");
-            context.beginPath();
-            context.arc(x,y,10,0,2*Math.PI);
-            context.stroke();
-
-            context.font="20px sans-serif";
-            context.fillText(name,x + 10,y + 10);
-
-        };
-
         return (
-           <div>
-               <NavBar/>
-               <canvas id="roverMap" width="400" height="400"></canvas>
-           </div>
+            <div>
+                <NavBar/>
+                <canvas id="roverMap" width="400" height="400"></canvas>
+            </div>
         )
+    },
+
+    drawRover : function(x, y, name){
+        var context = document.getElementById("roverMap").getContext("2d");
+        context.beginPath();
+        context.arc(x,y,10,0,2*Math.PI);
+        context.stroke();
+
+        context.font="20px sans-serif";
+        context.fillText(name,x + 10,y + 10);
+
     }
 } );
 

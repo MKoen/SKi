@@ -16,11 +16,11 @@ var NavBar = React.createClass( {
                         <a href="#">Rogue Rovers</a>
                     </Navbar.Brand>
                 </Navbar.Header>
-                <Nav>
-                    <NavItem><Link to={`/channels`}>Channels</Link></NavItem>
-                    <NavItem><Link to={`/`}>Rovers</Link></NavItem>
-                    <NavItem><Link to={`/`}>Map</Link></NavItem>
-                </Nav>
+                <ul>
+                    <li><Link to={`/channels`}>Channels</Link></li>
+                    <li><Link to={`/`}>Rovers</Link></li>
+                    <li><Link to={`/`}>Map</Link></li>
+                </ul>
             </Navbar>
         )
     }

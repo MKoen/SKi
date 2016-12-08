@@ -8,7 +8,7 @@ var Rovers = React.createClass( {
     },
 
     render: function () {
-        let rovers = this.props.channels.filter((channel) => { return channel.active });
+        let rovers = this.props.route.channels().filter((channel) => { return channel.active });
         let roverList = [];
 
         rovers.forEach((rover) => {

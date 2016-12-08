@@ -8,19 +8,18 @@ var Channels = React.createClass( {
     },
 
     render: function () {
-        let channels = this.props.channels;
         let channelList = [];
 
-        channels.forEach((channel) => {
+        this.props.route.channels().forEach((channel) => {
             let channelListItem;
 
             if (channel.active) {
                 channelListItem = (
-                    <ListGroupItem header={channel.id} active>{channel.name}</ListGroupItem>
+                    <ListGroupItem key={channel.id} header={channel.id} active>{channel.name}</ListGroupItem>
                 )
             } else {
                 channelListItem = (
-                    <ListGroupItem header={channel.id} disabled>Not in use</ListGroupItem>
+                    <ListGroupItem key={channel.id} header={channel.id} disabled>Not in use</ListGroupItem>
                 )
             }
 
