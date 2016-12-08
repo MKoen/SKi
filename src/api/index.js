@@ -15,7 +15,6 @@ var Channels = (function () {
 	    return API.getRoverInformation(channel)
 		.then(rover => {
 		    rover.id = channel;
-		    console.log(rover);
 		    return rover;
 		});
 	},
@@ -27,9 +26,9 @@ var Channels = (function () {
 	    return Promise.all([
 		API.getSensorInformationForRover(rover.id, SENSORS.temperature),
 		API.getSensorInformationForRover(rover.id, SENSORS.water)
-	    ]).then((temperature, water) => {
-		rover.temperature = temperature;
-		rover.water = water;
+	    ]).then(sensorData => {
+		rover.temperature = sensorData[0];
+		rover.water = sensorData[1];
 		return rover;
 	    });
 	},
@@ -52,7 +51,7 @@ var Channels = (function () {
 
 	start = function () {
 	    _composeData();
-	    interval = setInterval(() => _composeData, POLLING_TIME);
+	    interval = setInterval(_composeData, POLLING_TIME);
 	};
 
     return {
