@@ -1,12 +1,14 @@
 import API from './communication';
 import Promise from 'promise';
+import Rover from '../models/rover';
 
 var Channels = (function () {
     const POLLING_TIME = 2000,
 	  SENSORS = {
 	      temperature: 't1',
 	      water: 'w1'
-	  };
+	  },
+	  STORAGE_KEY = 'storage_rover_data';
 
     let hook = () => {},
 	interval;
@@ -29,8 +31,31 @@ var Channels = (function () {
 	    ]).then(sensorData => {
 		rover.temperature = sensorData[0];
 		rover.water = sensorData[1];
-		return rover;
+		return new Rover(rover);
 	    });
+	},
+
+	_getStorage = function () {
+	    return JSON.parse(sessionStorage.getItem(STORAGE_KEY)) || {};
+	},
+
+	_readableDate = function (date = new Date()) {
+	    return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}.${date.getMilliseconds()}`;
+	},
+
+	_saveRoverDataToObject = function (dst, key, data) {
+	    if (!dst.hasOwnProperty(key)) {
+		dst[key] = {};
+	    }
+	    dst[key][Date.now().toString()] = data;
+	},
+
+	_saveRovers = function (rovers) {
+	    let storage = _getStorage();
+
+	    rovers.forEach(rover => _saveRoverDataToObject(storage, rover.id, rover));
+
+	    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(storage));
 	},
 
 	_composeData = function () {
@@ -40,6 +65,10 @@ var Channels = (function () {
 					    ))
 		.then(rovers => Promise.all(rovers
 					    .map(rover => _extendRoverWithSensorData(rover))))
+		.then(rovers => {
+		    _saveRovers(rovers);
+		    return rovers;
+		})
 		.then(rovers => hook(rovers));
 	};
 
