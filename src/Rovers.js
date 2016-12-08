@@ -13,14 +13,19 @@ var Rovers = React.createClass( {
 
         data.forEach((rover) => {
             let roverListItem = (
-            <tr>
-                <td>{rover.id}</td>
-                <td>{rover.name}</td>
-                <td>{rover.position.x},{rover.position.y}</td>
-                <td>{rover.direction}</td>
-                <td>{rover.temperature}°C</td>
-                <td>{rover.water}</td>
-            </tr>
+                <tr>
+                    <td>{rover.id}</td>
+                    <td>{rover.name}</td>
+                    <td>{rover.position.x},{rover.position.y}</td>
+                    <td>{rover.direction}</td>
+                    <td>{rover.temperature}°C</td>
+                    <If test={rover.water > 0}>
+                        <td>Present</td>
+                    </If>
+                    <If test={rover.water == 0}>
+                        <td>Absent</td>
+                    </If>
+                </tr>
             );
             roverList.push(roverListItem);
         });
