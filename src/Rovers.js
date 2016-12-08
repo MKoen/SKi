@@ -1,13 +1,14 @@
 import React from 'react';
-import NavBar from './NavBar'
-import { Table} from 'react-bootstrap'
+import NavBar from './NavBar';
+import { Table} from 'react-bootstrap';
 
 var Rovers = React.createClass( {
     getInitialState: function () {
-        return {}
+        return {};
     },
 
     render: function () {
+        let rovers = this.props.route.channels().filter((channel) => { return channel.active });
         let roverList = [];
 
         this.props.route.channels().filter((channel) => { return channel.active; }).forEach((rover) => {
@@ -49,7 +50,7 @@ var Rovers = React.createClass( {
                    </tbody>
                </Table>
            </div>
-        )
+        );
     }
 } );
 

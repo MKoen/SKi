@@ -1,15 +1,14 @@
 import React from 'react';
-import NavBar from './NavBar'
+import NavBar from './NavBar';
 
 var Map = React.createClass( {
     getInitialState: function () {
-        return {}
+        return {};
     },
 
     render: function () {
-
-        let rovers = this.props.route.channels().filter((channel) => {
-            return channel.active
+        let rovers = this.props.getChannels().filter((channel) => {
+            return channel.active;
         });
 
         rovers.forEach((rover) => {
@@ -21,7 +20,7 @@ var Map = React.createClass( {
                 <NavBar/>
                 <canvas id="roverMap" width="400" height="400"></canvas>
             </div>
-        )
+        );
     },
 
     drawRover : function(x, y, name){

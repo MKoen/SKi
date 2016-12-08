@@ -4,7 +4,7 @@ import { Table, Glyphicon } from 'react-bootstrap'
 
 var Channels = React.createClass( {
     getInitialState: function () {
-        return {}
+        return {};
     },
 
     render: function () {
