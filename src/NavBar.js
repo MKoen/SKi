@@ -13,13 +13,12 @@ var NavBar = React.createClass( {
             <Navbar>
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <a href="#">Rogue Rovers</a>
+                        <a href="/list">Rogue Rovers</a>
                     </Navbar.Brand>
                 </Navbar.Header>
-                <ul>
-                    <li><a href="/channels">Channels</a></li>
-		    <li><a href="/rovers">Rovers</a></li>
-                    <li><a href="/map">Map</a></li>
+                <ul className="nav navbar-nav">
+                    <li className="nav-item"><a href="/list">List of Rovers</a></li>
+		            <li className="nav-item"><a href="/map">Map</a></li>
                 </ul>
             </Navbar>
         );

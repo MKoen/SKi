@@ -8,11 +8,10 @@ var Rovers = React.createClass( {
     },
 
     render: function () {
-        let rovers = this.props.etChannels()
-	    .filter(channel => channel.active);
+        let rovers = this.props.route.channels().filter((channel) => { return channel.active });
         let roverList = [];
 
-        rovers.forEach((rover) => {
+        this.props.route.channels().filter((channel) => { return channel.active; }).forEach((rover) => {
             let roverListItem = (
                 <tr>
                     <td>{rover.id}</td>
