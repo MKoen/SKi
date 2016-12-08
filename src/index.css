@@ -4,10 +4,24 @@ body {
   font-family: sans-serif;
   background-image: url("resoures/images/background.jpg");
   background-size: cover;
+    text-align: center;
 }
 
 .channelList{
     margin: 1vh 1vw 1vh 1vw;
-    width: 50%;
+    width: 35%;
     background-color: rgba(248,248,248,0.75);
+    display: inline-block;
+}
+
+.favouritesList{
+    margin: 1vh 1vw 1vh 1vw;
+    width: 35%;
+    background-color: rgba(248,248,248,0.75);
+    display: inline-block;
+    vertical-align: top;
+}
+
+.pointer{
+    cursor: pointer;
 }
