@@ -63,6 +63,7 @@ var Rovers = React.createClass( {
             return {
                 channels: this.state.channels.filter((channel) => channel.active).sort((a,b) => {
                     if (property == "x" || property == "y") return a.position[property]-b.position[property];
+                    if (property == "distance") return a.getDistance()-b.getDistance();
                     return a[property]-b[property];
                 }).concat(this.state.channels.filter((channel) => !channel.active)),
                 sortBy: property

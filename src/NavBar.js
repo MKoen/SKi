@@ -13,7 +13,7 @@ var NavBar = React.createClass( {
             <Navbar>
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <a href="#">Rogue Rovers</a>
+                        <a href="/list">Rogue Rovers</a>
                     </Navbar.Brand>
                 </Navbar.Header>
                 <ul className="nav navbar-nav">

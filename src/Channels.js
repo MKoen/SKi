@@ -30,7 +30,7 @@ var Channels = React.createClass( {
                     <td>{channel.name}</td>
                     <td>{channel.position.x} </td>
                     <td>{channel.position.y} </td>
-                    <td>5</td>
+                    <td>{channel.getDistance()}</td>
                     <td><Button onClick={ () => onClick(channel.id)}>
                         <Glyphicon className="pointer" glyph={glyphicon}/>
                     </Button></td>
@@ -71,7 +71,7 @@ var Channels = React.createClass( {
                     <td>{channel.name}</td>
                     <td>{channel.position.x}</td>
                     <td>{channel.position.y}</td>
-                    <td>5</td>
+                    <td>{channel.getDistance()}</td>
                     <td>{channel.direction}</td>
                     <td>{channel.speed}</td>
                     <td>{channel.temperature}°C</td>
