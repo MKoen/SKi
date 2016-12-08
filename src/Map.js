@@ -7,7 +7,7 @@ var Map = React.createClass( {
     },
 
     render: function () {
-        let rovers = this.props.getRovers();
+        let rovers = this.props.channels.filter((channel) => { return channel.active });
 
         rovers.forEach((rover) => {
 
@@ -20,7 +20,7 @@ var Map = React.createClass( {
             context.stroke();
 
             context.font="20px sans-serif";
-            context.fillText(name,x + 10,y + 10;
+            context.fillText(name,x + 10,y + 10);
 
         };
 

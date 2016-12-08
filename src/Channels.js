@@ -8,7 +8,7 @@ var Channels = React.createClass( {
     },
 
     render: function () {
-        let channels = this.props.getChannels();
+        let channels = this.props.channels;
         let channelList = [];
 
         channels.forEach((channel) => {
